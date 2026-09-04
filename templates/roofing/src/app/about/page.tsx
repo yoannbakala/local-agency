@@ -5,7 +5,7 @@ import { site } from '@/site.config'
 
 export const metadata: Metadata = {
   title: `About Us | ${site.name}`,
-  description: `Learn about ${site.name} — a locally owned and operated roofing company serving ${site.serviceAreas[0]} and surrounding areas for over 15 years.`,
+  description: `Learn about ${site.name} — a locally owned and operated roofing company serving ${site.serviceAreas[0]} and surrounding areas since 2019.`,
 }
 
 export default function About() {
@@ -13,7 +13,7 @@ export default function About() {
     <>
       <Hero
         title="About Our Company"
-        subtitle={`Locally owned and operated, ${site.name} has been protecting homes and businesses in ${site.serviceAreas[0]} for over 15 years.`}
+        subtitle={`Locally owned and operated, ${site.name} has been protecting homes and businesses in ${site.serviceAreas[0]} since 2019.`}
         showCTA={false}
       />
 
@@ -29,7 +29,7 @@ export default function About() {
               Over the years, we&apos;ve built our reputation one roof at a time — through quality craftsmanship, clear communication, and a commitment to doing the job right the first time. We treat every home like it&apos;s our own, because your roof is your family&apos;s first line of defense.
             </p>
             <p>
-              Today, we&apos;re proud to have served thousands of homeowners across {site.serviceAreas.slice(0, 3).join(', ')}, and beyond. Our team of experienced roofers brings decades of combined experience to every project, no matter how big or small.
+              Today, we&apos;re proud to serve homeowners and businesses across {site.serviceAreas.slice(0, 3).join(', ')}, and the entire Chicagoland area. Our team brings hands-on experience to every project, no matter how big or small.
             </p>
           </div>
         </div>
@@ -39,10 +39,10 @@ export default function About() {
       <section className="py-16 bg-primary-900 text-white">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { value: '15+', label: 'Years in Business' },
-            { value: '2,000+', label: 'Projects Completed' },
-            { value: '5.0', label: 'Google Rating' },
-            { value: '100%', label: 'Satisfaction Guarantee' },
+            { value: '6+', label: 'Years in Business' },
+            { value: '4.9', label: 'Google Rating' },
+            { value: '48+', label: 'Five-Star Reviews' },
+            { value: 'A+', label: 'BBB Rating' },
           ].map(stat => (
             <div key={stat.label}>
               <div className="text-4xl md:text-5xl font-bold text-accent-400">{stat.value}</div>
