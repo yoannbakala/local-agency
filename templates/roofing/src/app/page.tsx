@@ -40,7 +40,7 @@ export default function Home() {
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-900">Why Homeowners Choose Us</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="space-y-6">
             {[
               {
                 icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
@@ -58,14 +58,16 @@ export default function Home() {
                 text: `Proudly serving ${site.serviceAreas[0]} and surrounding communities since 2019. Your neighbors trust us — you can too.`,
               },
             ].map(item => (
-              <div key={item.title} className="text-center">
-                <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-5">
-                  <svg className="w-8 h-8 text-accent-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+              <div key={item.title} className="flex items-start gap-6 bg-white rounded-xl p-6 shadow-sm border border-primary-100">
+                <div className="w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-primary-900 mb-3">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{item.text}</p>
+                <div>
+                  <h3 className="text-xl font-bold text-primary-900 mb-2">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{item.text}</p>
+                </div>
               </div>
             ))}
           </div>
