@@ -12,8 +12,8 @@ export default function Services() {
   return (
     <>
       <Hero
-        title="Our Roofing Services"
-        subtitle="From emergency repairs to complete roof replacements, we deliver expert craftsmanship on every project."
+        title="What We Can Do for You"
+        subtitle="Flat roofs, shingle roofs, rubber membranes, emergency patches — if it goes on top of a building, we handle it."
         showCTA={false}
       />
 

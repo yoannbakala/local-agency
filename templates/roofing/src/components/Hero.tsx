@@ -24,7 +24,7 @@ export default function Hero({
               href="/contact"
               className="inline-block bg-accent-500 text-primary-950 px-8 py-4 rounded-lg font-bold text-lg hover:bg-accent-400 transition-colors text-center"
             >
-              Get Your Free Estimate
+              Get a Free Quote
             </a>
             <a
               href={site.phoneHref}

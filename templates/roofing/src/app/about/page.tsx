@@ -12,24 +12,24 @@ export default function About() {
   return (
     <>
       <Hero
-        title="About Our Company"
-        subtitle={`Locally owned and operated, ${site.name} has been protecting homes and businesses in ${site.serviceAreas[0]} since 2019.`}
+        title="Who We Are"
+        subtitle={`${site.name} is a family-owned roofing company serving ${site.serviceAreas[0]} and the south suburbs around the clock.`}
         showCTA={false}
       />
 
       {/* Story */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-primary-900 mb-6">Our Story</h2>
+          <h2 className="text-3xl font-bold text-primary-900 mb-6">How We Got Here</h2>
           <div className="prose prose-lg text-slate-600 space-y-4">
             <p>
-              {site.name} was founded on a simple belief: every homeowner deserves honest, high-quality roofing work at a fair price. What started as a small family operation has grown into one of the most trusted roofing companies in the {site.serviceAreas[0]} area.
+              {site.name} started with a truck, a ladder, and a promise: show up when you say you will, do the work right, and charge a fair price. That was enough to keep the phone ringing, and it still is today.
             </p>
             <p>
-              Over the years, we&apos;ve built our reputation one roof at a time — through quality craftsmanship, clear communication, and a commitment to doing the job right the first time. We treat every home like it&apos;s our own, because your roof is your family&apos;s first line of defense.
+              We&apos;re one of the few roofers in the area that works around the clock. Storms don&apos;t wait for Monday morning, and neither do we. Our crew lives in the neighborhoods we serve — when a tree takes out your shingles at 2 AM, we&apos;re 15 minutes away, not an hour.
             </p>
             <p>
-              Today, we&apos;re proud to serve homeowners and businesses across {site.serviceAreas.slice(0, 3).join(', ')}, and the entire Chicagoland area. Our team brings hands-on experience to every project, no matter how big or small.
+              From single-family homes in {site.serviceAreas[0]} to commercial flat roofs in {site.serviceAreas.slice(1, 3).join(' and ')}, we bring the same hands-on approach to every job. No subcontractors, no runaround — just our team on your roof getting it done.
             </p>
           </div>
         </div>
@@ -39,10 +39,10 @@ export default function About() {
       <section className="py-16 bg-primary-900 text-white">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { value: '6+', label: 'Years in Business' },
-            { value: '4.9', label: 'Google Rating' },
-            { value: '48+', label: 'Five-Star Reviews' },
-            { value: 'A+', label: 'BBB Rating' },
+            { value: '24/7', label: 'Always Available' },
+            { value: '5.0', label: 'Google Rating' },
+            { value: '10+', label: 'Cities Served' },
+            { value: '100%', label: 'Satisfaction Rate' },
           ].map(stat => (
             <div key={stat.label}>
               <div className="text-4xl md:text-5xl font-bold text-accent-400">{stat.value}</div>
@@ -55,20 +55,20 @@ export default function About() {
       {/* Values */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-primary-900 mb-12 text-center">What We Stand For</h2>
+          <h2 className="text-3xl font-bold text-primary-900 mb-12 text-center">Our Commitments to You</h2>
           <div className="grid md:grid-cols-3 gap-10">
             {[
               {
-                title: 'Integrity',
-                text: 'We give you an honest assessment, honest pricing, and honest timelines. No surprises, no hidden fees, no pressure.',
+                title: 'Straight Talk',
+                text: 'We\'ll tell you exactly what your roof needs — nothing more, nothing less. If a repair saves you thousands over a replacement, that\'s what we recommend.',
               },
               {
-                title: 'Quality',
-                text: 'We use premium materials and proven techniques. Every roof we install or repair is built to last and backed by our warranty.',
+                title: 'Built to Last',
+                text: 'We only install materials we\'d put on our own homes. Every job comes with a written workmanship guarantee because we stand behind our work.',
               },
               {
-                title: 'Service',
-                text: 'We answer your calls, show up on time, and keep your property clean. Your experience matters to us as much as the finished roof.',
+                title: 'Respect Your Property',
+                text: 'Tarps down before we start, debris hauled away when we finish. We treat your yard like it\'s ours — because we live in this community too.',
               },
             ].map(v => (
               <div key={v.title} className="bg-slate-50 rounded-xl p-8">
