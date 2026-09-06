@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { site } from '@/site.config'
 
 const links = [
@@ -29,9 +30,7 @@ export default function Header() {
       <nav className="bg-primary-900 text-white">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl md:text-3xl font-black tracking-tight">
-              <span className="text-accent-500">Eliot</span> Roofing
-            </span>
+            <Image src="/eliot-logo.svg" alt={site.name} width={150} height={150} className="h-16 -my-2 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

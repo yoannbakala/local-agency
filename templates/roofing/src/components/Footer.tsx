@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { site } from '@/site.config'
 
 export default function Footer() {
@@ -6,9 +7,7 @@ export default function Footer() {
     <footer className="bg-primary-950 text-primary-200">
       <div className="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-4 gap-10">
         <div>
-          <h3 className="text-white text-xl font-bold mb-4">
-            <span className="text-accent-500">Eliot</span> Roofing
-          </h3>
+          <Image src="/eliot-logo.svg" alt={site.name} width={120} height={120} className="h-14 w-auto mb-2" />
           <p className="text-sm leading-relaxed">{site.tagline}</p>
           <p className="mt-4 text-sm">{site.address}</p>
         </div>
