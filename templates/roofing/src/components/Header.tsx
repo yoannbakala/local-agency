@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { site } from '@/site.config'
 
 const links = [
@@ -20,17 +19,17 @@ export default function Header() {
     <header className="sticky top-0 z-50">
       <div className="bg-primary-950 text-white text-sm py-2">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <span className="hidden sm:inline">Licensed &amp; Insured · Free Estimates</span>
+          <span className="hidden sm:inline">Licensed &amp; Insured · Lake County, IL</span>
           <a href={site.phoneHref} className="text-accent-400 font-semibold hover:text-accent-300 transition-colors">
             {site.phone}
           </a>
         </div>
       </div>
 
-      <nav className="bg-primary-900 text-white">
+      <nav className="bg-primary-900/95 backdrop-blur-sm text-white">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center">
-            <Image src="/logo.svg" alt="Ramirez Roofing" width={150} height={150} className="h-36 -my-6 w-auto" />
+          <Link href="/" className="text-xl md:text-2xl font-bold tracking-tight">
+            <span className="text-accent-400">Brilliant</span> Roofing
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -43,7 +42,7 @@ export default function Header() {
               href={site.phoneHref}
               className="bg-accent-500 text-primary-950 px-5 py-2.5 rounded-lg font-bold hover:bg-accent-400 transition-colors"
             >
-              Call Now
+              Free Estimate
             </a>
           </div>
 

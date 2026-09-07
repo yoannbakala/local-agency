@@ -5,7 +5,7 @@ import { site } from '@/site.config'
 
 export const metadata: Metadata = {
   title: `Contact Us | ${site.name}`,
-  description: `Contact ${site.name} for a free roofing estimate. Call ${site.phone} or fill out our online form. Serving ${site.serviceAreas[0]} and surrounding areas.`,
+  description: `Contact ${site.name} for a free roofing estimate. Call ${site.phone} or fill out our online form. Serving Round Lake Beach and Lake County.`,
 }
 
 export default function Contact() {
@@ -19,13 +19,11 @@ export default function Contact() {
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-5 gap-12">
-          {/* Form */}
           <div className="lg:col-span-3">
             <h2 className="text-2xl font-bold text-primary-900 mb-6">Request an Estimate</h2>
             <ContactForm />
           </div>
 
-          {/* Contact Info Sidebar */}
           <div className="lg:col-span-2 space-y-8">
             <div className="bg-primary-900 text-white rounded-xl p-8">
               <h3 className="text-xl font-bold mb-6">Contact Information</h3>
@@ -78,11 +76,11 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-xl p-8">
+            <div className="bg-primary-50 rounded-xl p-8">
               <h3 className="text-lg font-bold text-primary-900 mb-4">Service Areas</h3>
               <div className="flex flex-wrap gap-2">
                 {site.serviceAreas.map(area => (
-                  <span key={area} className="bg-white text-primary-700 px-3 py-1.5 rounded-full text-sm font-medium border border-slate-200">
+                  <span key={area} className="bg-white text-primary-700 px-3 py-1.5 rounded-full text-sm font-medium border border-primary-200">
                     {area}
                   </span>
                 ))}

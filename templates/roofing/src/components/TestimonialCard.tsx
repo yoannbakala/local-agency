@@ -4,7 +4,7 @@ export default function TestimonialCard({ text, author, rating }: {
   rating: number
 }) {
   return (
-    <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-100">
+    <div className="bg-white rounded-xl p-8 shadow-sm border border-primary-100 hover:shadow-md transition-shadow">
       <div className="flex gap-1 mb-4">
         {Array.from({ length: rating }, (_, i) => (
           <svg key={i} className="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
@@ -13,7 +13,7 @@ export default function TestimonialCard({ text, author, rating }: {
         ))}
       </div>
       <p className="text-slate-700 leading-relaxed mb-4 italic">&ldquo;{text}&rdquo;</p>
-      <p className="font-semibold text-primary-800">— {author}</p>
+      <p className="font-semibold text-primary-800">&mdash; {author}</p>
     </div>
   )
 }

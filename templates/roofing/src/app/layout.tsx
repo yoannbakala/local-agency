@@ -8,8 +8,8 @@ import { site } from '@/site.config'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: `${site.name} | Professional Roofing Services`,
-  description: `Professional roof repair, installation, and inspection services. Licensed, insured, and trusted by homeowners in ${site.serviceAreas[0]} and surrounding areas.`,
+  title: `${site.name} | Professional Roofing in Round Lake Beach, IL`,
+  description: `Professional roof replacement, repair, and installation in Round Lake Beach and Lake County. Licensed, insured, 4.9 stars on Google. Call ${site.phone} for a free estimate.`,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

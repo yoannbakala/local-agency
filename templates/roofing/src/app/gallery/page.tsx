@@ -5,26 +5,23 @@ import { site } from '@/site.config'
 
 export const metadata: Metadata = {
   title: `Our Work | ${site.name}`,
-  description: `See examples of our roofing projects in ${site.serviceAreas[0]} and surrounding areas. Quality craftsmanship you can trust.`,
+  description: `See examples of roof replacements, repairs, and installs across Lake County by Brilliant Roofing.`,
 }
 
 const categories = [
   {
     name: 'Complete Roof Replacement',
-    type: 'Residential',
-    photos: [
-      ...Array.from({ length: 2 }, (_, i) => `/gallery/Complete Roof Replacement ${i + 1}.jpg`),
-      ...Array.from({ length: 6 }, (_, i) => `/gallery/Complete Roof Replacement ${i + 3}.jpg`),
-    ],
+    type: 'Roofing',
+    photos: Array.from({ length: 8 }, (_, i) => `/gallery/Complete Roof Replacement ${i + 1}.jpg`),
   },
   {
     name: 'Shingle Replacement',
-    type: 'Residential',
+    type: 'Roofing',
     photos: Array.from({ length: 7 }, (_, i) => `/gallery/Shingle Replacement ${i + 1}.jpg`),
   },
   {
     name: 'Storm Damage Repair',
-    type: 'Residential',
+    type: 'Roofing',
     photos: [
       ...Array.from({ length: 2 }, (_, i) => `/gallery/Storm damage ${i + 1}.jpg`),
       ...Array.from({ length: 5 }, (_, i) => `/gallery/storm damage ${i + 3}.jpg`),
@@ -32,7 +29,7 @@ const categories = [
   },
   {
     name: 'Flat Roof',
-    type: 'Commercial',
+    type: 'Roofing',
     photos: [
       ...Array.from({ length: 2 }, (_, i) => `/gallery/Flat roof ${i + 1}.jpg`),
       ...Array.from({ length: 6 }, (_, i) => `/gallery/flat roof ${i + 3}.jpg`),
@@ -40,13 +37,8 @@ const categories = [
   },
   {
     name: 'New Construction',
-    type: 'Commercial',
+    type: 'Roofing',
     photos: Array.from({ length: 5 }, (_, i) => `/gallery/New Construction ${i + 1}.jpg`),
-  },
-  {
-    name: 'Gutter Installation',
-    type: 'Residential',
-    photos: Array.from({ length: 3 }, (_, i) => `/gallery/Gutter Installation ${i + 1}.jpg`),
   },
 ]
 
@@ -54,8 +46,8 @@ export default function Gallery() {
   return (
     <>
       <Hero
-        title="Our Work"
-        subtitle="Every roof tells a story. Here are some of the projects we're proud of."
+        title="Our Work Speaks for Itself"
+        subtitle="Take a look at real roofing projects across Lake County — every one done right, cleaned up, and backed by our warranty."
         showCTA={false}
       />
 
@@ -69,7 +61,7 @@ export default function Gallery() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {cat.photos.map((photo, i) => (
-                  <div key={i} className="rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                  <div key={i} className="rounded-xl overflow-hidden shadow-sm border border-primary-100 hover:shadow-md transition-shadow">
                     <img
                       src={photo}
                       alt={`${cat.name} project ${i + 1}`}
@@ -82,17 +74,17 @@ export default function Gallery() {
             </div>
           ))}
 
-          <div className="text-center bg-slate-50 rounded-xl p-10">
-            <h3 className="text-2xl font-bold text-primary-900 mb-3">See More of Our Work</h3>
-            <p className="text-slate-600 mb-6">Follow us on Facebook for more project photos, updates, and before &amp; after transformations.</p>
+          <div className="text-center bg-primary-50 rounded-xl p-10">
+            <h3 className="text-2xl font-bold text-primary-900 mb-3">Want to See More?</h3>
+            <p className="text-slate-600 mb-6">Check out our Google Business page for more photos and reviews from Lake County homeowners.</p>
             <a
-              href={site.social.facebook}
+              href={site.social.google}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#1877F2] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#166FE5] transition-colors"
+              className="inline-flex items-center gap-3 bg-accent-500 text-primary-950 px-8 py-4 rounded-lg font-bold text-lg hover:bg-accent-400 transition-colors"
             >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-              View More on Facebook
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+              Find Us on Google
             </a>
           </div>
         </div>
