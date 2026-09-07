@@ -5,15 +5,15 @@ import { site } from '@/site.config'
 
 export const metadata: Metadata = {
   title: `Our Services | ${site.name}`,
-  description: `Professional roofing services including repair, installation, inspection, and gutter services. Serving ${site.serviceAreas[0]} and surrounding areas.`,
+  description: `Roofing and landscaping services in Chicago — roof repair, installation, lawn care, and hardscape design from one trusted crew.`,
 }
 
 export default function Services() {
   return (
     <>
       <Hero
-        title="Our Roofing Services"
-        subtitle="From emergency repairs to complete roof replacements, we deliver expert craftsmanship on every project."
+        title="Everything Your Property Needs"
+        subtitle="Roof leaking? Yard looking rough? We handle both — and everything in between."
         showCTA={false}
       />
 
@@ -24,7 +24,7 @@ export default function Services() {
               <h2 className="text-3xl font-bold text-primary-900 mb-4">{service.title}</h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-8">{service.description}</p>
 
-              <div className="bg-slate-50 rounded-xl p-8">
+              <div className="bg-primary-50 rounded-xl p-8">
                 <h3 className="font-semibold text-primary-800 mb-4">What&apos;s Included</h3>
                 <ul className="space-y-3">
                   {service.features.map(f => (
@@ -39,7 +39,7 @@ export default function Services() {
               </div>
 
               <div className="mt-6">
-                <a href="/contact" className="inline-block bg-accent-500 text-primary-950 px-6 py-3 rounded-lg font-bold hover:bg-accent-400 transition-colors">
+                <a href="/contact" className="inline-block bg-accent-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-accent-400 transition-colors">
                   Get a Free {service.title} Estimate
                 </a>
               </div>

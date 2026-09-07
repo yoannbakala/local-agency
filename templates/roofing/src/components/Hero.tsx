@@ -1,17 +1,49 @@
+'use client'
+
+import { useRef, useState } from 'react'
 import { site } from '@/site.config'
 
 export default function Hero({
   title,
   subtitle,
   showCTA = true,
+  videoSrcs,
 }: {
   title: string
   subtitle: string
   showCTA?: boolean
+  videoSrcs?: string[]
 }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  function handleEnded() {
+    if (!videoSrcs || videoSrcs.length <= 1) return
+    const next = (currentIndex + 1) % videoSrcs.length
+    setCurrentIndex(next)
+    if (videoRef.current) {
+      videoRef.current.src = videoSrcs[next]
+      videoRef.current.play()
+    }
+  }
+
   return (
-    <section className="bg-primary-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 py-20 md:py-28">
+    <section className="relative bg-primary-900 text-white overflow-hidden">
+      {videoSrcs && videoSrcs.length > 0 && (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop={videoSrcs.length === 1}
+          playsInline
+          onEnded={handleEnded}
+          className="absolute inset-0 w-full h-full object-cover"
+          src={videoSrcs[0]}
+        />
+      )}
+      {videoSrcs && <div className="absolute inset-0 bg-black/60" />}
+
+      <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-28">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl">
           {title}
         </h1>

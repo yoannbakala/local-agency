@@ -5,31 +5,31 @@ import { site } from '@/site.config'
 
 export const metadata: Metadata = {
   title: `About Us | ${site.name}`,
-  description: `Learn about ${site.name} — a locally owned and operated roofing company serving ${site.serviceAreas[0]} and surrounding areas since 2019.`,
+  description: `Learn about ${site.name} — Chicago's go-to team for roofing and landscaping, all under one roof.`,
 }
 
 export default function About() {
   return (
     <>
       <Hero
-        title="About Our Company"
-        subtitle={`Locally owned and operated, ${site.name} has been protecting homes and businesses in ${site.serviceAreas[0]} since 2019.`}
+        title="The Crew Behind Courtesy"
+        subtitle={`${site.name} is a Chicago-based team that handles roofing and landscaping — so you don't have to hire two companies for one property.`}
         showCTA={false}
       />
 
       {/* Story */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-primary-900 mb-6">Our Story</h2>
+          <h2 className="text-3xl font-bold text-primary-900 mb-6">How It Started</h2>
           <div className="prose prose-lg text-slate-600 space-y-4">
             <p>
-              {site.name} was founded on a simple belief: every homeowner deserves honest, high-quality roofing work at a fair price. What started as a small family operation has grown into one of the most trusted roofing companies in the {site.serviceAreas[0]} area.
+              It started the way most good ideas do — a customer asked. We were finishing a roof job and the homeowner said, &quot;While you&apos;re here, any chance you do yards too?&quot; Turns out, we did. And we were good at it.
             </p>
             <p>
-              Over the years, we&apos;ve built our reputation one roof at a time — through quality craftsmanship, clear communication, and a commitment to doing the job right the first time. We treat every home like it&apos;s our own, because your roof is your family&apos;s first line of defense.
+              Word got around. Neighbors saw the same truck handling both the roof and the lawn, and they liked the simplicity. One crew, one schedule, one company that actually picks up the phone. That&apos;s how Courtesy became what it is today.
             </p>
             <p>
-              Today, we&apos;re proud to serve homeowners and businesses across {site.serviceAreas.slice(0, 3).join(', ')}, and the entire Chicagoland area. Our team brings hands-on experience to every project, no matter how big or small.
+              We&apos;re not the biggest operation in Chicago, and that&apos;s the point. Every job gets our direct attention — from the estimate to the final walkthrough. No sales reps, no subcontractors, no call centers. Just us, doing the work.
             </p>
           </div>
         </div>
@@ -39,10 +39,10 @@ export default function About() {
       <section className="py-16 bg-primary-900 text-white">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { value: '6+', label: 'Years in Business' },
-            { value: '4.9', label: 'Google Rating' },
-            { value: '48+', label: 'Five-Star Reviews' },
-            { value: 'A+', label: 'BBB Rating' },
+            { value: '5.0', label: 'Google Rating' },
+            { value: '2-in-1', label: 'Roofing & Landscaping' },
+            { value: '10+', label: 'Neighborhoods Served' },
+            { value: '100%', label: 'Owner-Operated' },
           ].map(stat => (
             <div key={stat.label}>
               <div className="text-4xl md:text-5xl font-bold text-accent-400">{stat.value}</div>
@@ -59,19 +59,19 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-10">
             {[
               {
-                title: 'Integrity',
-                text: 'We give you an honest assessment, honest pricing, and honest timelines. No surprises, no hidden fees, no pressure.',
+                title: 'Show Up, Follow Through',
+                text: 'We confirm every appointment, arrive when we say, and finish what we start. If something comes up, you hear it from us first — not the other way around.',
               },
               {
-                title: 'Quality',
-                text: 'We use premium materials and proven techniques. Every roof we install or repair is built to last and backed by our warranty.',
+                title: 'Honest Pricing, Always',
+                text: 'The number on your estimate is the number on your invoice. We don\'t low-ball to win the job and tack on extras later. What you see is what you pay.',
               },
               {
-                title: 'Service',
-                text: 'We answer your calls, show up on time, and keep your property clean. Your experience matters to us as much as the finished roof.',
+                title: 'Leave It Better',
+                text: 'When we drive away, your property should look better than when we pulled up. That means clean jobsites, trimmed edges, and no surprises hiding in the gutters.',
               },
             ].map(v => (
-              <div key={v.title} className="bg-slate-50 rounded-xl p-8">
+              <div key={v.title} className="bg-primary-50 rounded-xl p-8">
                 <h3 className="text-xl font-bold text-primary-900 mb-3">{v.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{v.text}</p>
               </div>
