@@ -1,0 +1,81 @@
+export const site = {
+  name: 'Ironclad Roofing & Exteriors',
+  tagline: 'Denver\'s Most Trusted Roofing Contractor',
+  phone: '(720) 555-0142',
+  phoneHref: 'tel:+17205550142',
+  emergencyPhone: '(720) 555-0199',
+  email: 'info@ironcladroofing.com',
+  address: '4825 E Colfax Ave, Denver, CO 80220',
+  hours: 'Mon–Fri 7am–6pm, Sat 8am–2pm',
+  serviceAreas: [
+    'Denver', 'Aurora', 'Lakewood', 'Arvada',
+    'Westminster', 'Thornton', 'Centennial', 'Boulder',
+    'Littleton', 'Parker', 'Castle Rock', 'Golden',
+  ],
+  stats: [
+    { value: '30+', label: 'Years Experience' },
+    { value: '2,500+', label: 'Roofs Completed' },
+    { value: '4.9', label: 'Google Rating' },
+    { value: '100%', label: 'Licensed & Insured' },
+  ],
+  services: [
+    {
+      title: 'Residential Roofing',
+      slug: 'residential-roofing',
+      description: 'From complete tear-offs to re-roofs, we protect Denver homes with premium shingles and metal roofing systems. Every residential project includes a full attic ventilation assessment and a 25-year workmanship warranty backed by our three decades in business.',
+      image: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?w=700&q=80',
+      features: ['Asphalt & architectural shingles', 'Standing seam metal roofing', 'Attic ventilation assessment', 'Ice & water shield protection', '25-year workmanship warranty'],
+    },
+    {
+      title: 'Commercial Roofing',
+      slug: 'commercial-roofing',
+      description: 'We install and maintain flat roof systems for warehouses, retail centers, and multi-unit properties across the Denver metro. Our crew is certified in TPO, EPDM, and modified bitumen systems with minimal disruption to your tenants.',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&q=80',
+      features: ['TPO & EPDM membranes', 'Modified bitumen systems', 'Preventive maintenance contracts', 'Roof coating & restoration', 'Emergency leak response'],
+    },
+    {
+      title: 'Storm Damage Repair',
+      slug: 'storm-damage-repair',
+      description: 'Colorado hailstorms don\'t wait and neither do we. Our certified adjusters work directly with your insurance company to document damage, file claims, and restore your roof fast—often at little or no out-of-pocket cost to you.',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=700&q=80',
+      features: ['Free storm damage inspection', 'Insurance claim assistance', 'Emergency tarping within 24 hrs', 'Hail & wind damage restoration', 'Certified insurance adjusters'],
+    },
+    {
+      title: 'Gutter Installation',
+      slug: 'gutter-installation',
+      description: 'Protect your foundation and landscaping with seamless aluminum gutters custom-fabricated on-site. We install leaf guard systems that handle Colorado\'s heavy spring debris so you never climb a ladder again.',
+      image: 'https://images.unsplash.com/photo-1585544314038-a0d3769d0193?w=700&q=80',
+      features: ['Seamless aluminum gutters', 'Leaf guard systems', 'Downspout extensions', 'Gutter cleaning & repair'],
+    },
+    {
+      title: 'Siding & Exteriors',
+      slug: 'siding-exteriors',
+      description: 'Complete your home\'s exterior with James Hardie fiber cement, vinyl, or engineered wood siding. We handle soffit, fascia, and trim work so everything matches and your curb appeal gets the upgrade it deserves.',
+      image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80',
+      features: ['James Hardie fiber cement', 'Vinyl siding installation', 'Soffit & fascia replacement', 'Full exterior remodels', 'Color consultation'],
+    },
+  ],
+  testimonials: [
+    {
+      text: 'After the hailstorm last spring, Ironclad handled everything—insurance paperwork, temporary tarp, full replacement. The crew was on-site within 48 hours and our new roof looks better than the original. Highly recommend.',
+      author: 'Sarah & Mike D.',
+      location: 'Centennial, CO',
+      rating: 5,
+    },
+    {
+      text: 'We got four quotes and Ironclad was the most thorough by far. They found attic ventilation issues two other companies missed entirely. Fair price, clean job site, zero complaints.',
+      author: 'James P.',
+      location: 'Lakewood, CO',
+      rating: 5,
+    },
+    {
+      text: 'Used Ironclad for our office building’s flat roof replacement. Professional from start to finish, minimal disruption to our tenants, and they came in under budget. Our go-to roofer from now on.',
+      author: 'Linda K.',
+      location: 'Aurora, CO',
+      rating: 5,
+    },
+  ],
+  social: {
+    google: '#',
+  },
+}

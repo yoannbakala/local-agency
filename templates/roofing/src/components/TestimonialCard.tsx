@@ -3,8 +3,10 @@ export default function TestimonialCard({ text, author, rating }: {
   author: string
   rating: number
 }) {
+  const initials = author.split(' ').map(w => w[0]).join('')
+
   return (
-    <div className="bg-white rounded-xl p-8 shadow-sm border border-primary-100 hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-2xl p-8 shadow-sm border border-primary-100 hover:shadow-lg transition-shadow">
       <div className="flex gap-1 mb-4">
         {Array.from({ length: rating }, (_, i) => (
           <svg key={i} className="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
@@ -12,8 +14,16 @@ export default function TestimonialCard({ text, author, rating }: {
           </svg>
         ))}
       </div>
-      <p className="text-slate-700 leading-relaxed mb-4 italic">&ldquo;{text}&rdquo;</p>
-      <p className="font-semibold text-primary-800">&mdash; {author}</p>
+      <p className="text-slate-700 leading-relaxed mb-6">&ldquo;{text}&rdquo;</p>
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-primary-900 flex items-center justify-center text-white text-sm font-bold">
+          {initials}
+        </div>
+        <div>
+          <p className="font-semibold text-primary-900">{author}</p>
+          <p className="text-xs text-slate-500">Verified Customer</p>
+        </div>
+      </div>
     </div>
   )
 }

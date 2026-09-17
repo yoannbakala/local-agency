@@ -3,212 +3,696 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex Web Solutions | Websites for Local Service Businesses</title>
+  <title>Agentix Web Solutions | Websites for Local Service Businesses</title>
   <meta name="description" content="We help local service businesses turn their online presence into a reliable source of customer inquiries. Professional websites built to generate calls and estimates.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           colors: {
-            brand: { 50:'#f5f3ff',100:'#ede9fe',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95',950:'#2e1065' }
+            brand: { 50:'#f8f5ff',100:'#efe8ff',200:'#ddd0fe',300:'#bfa6f0',400:'#9b6fd4',500:'#7b3fb8',600:'#65289e',700:'#541d85',800:'#42166a',900:'#311050',950:'#1e0a30' },
+            accent: { 300:'#7edce2',400:'#4dc9d0',500:'#2ab4bc',600:'#229aa1',700:'#1b8088' }
           }
         }
       }
     }
   </script>
-  <style>html{scroll-behavior:smooth}</style>
+  <style>
+    html { scroll-behavior: smooth }
+
+    /* Animated gradient background */
+    .hero-gradient {
+      background: linear-gradient(-45deg, #1a1230, #2a1545, #142838, #1e0a30, #251540);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
+
+    /* Floating grid overlay */
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(101,40,158,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(101,40,158,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Glow effects */
+    .glow-card { transition: all 0.4s ease }
+    .glow-card:hover {
+      box-shadow: 0 0 30px rgba(101,40,158,0.15), 0 20px 60px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+
+    /* Animated border gradient */
+    .gradient-border {
+      position: relative;
+      background: white;
+      border-radius: 1rem;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 1rem;
+      padding: 1px;
+      background: linear-gradient(135deg, #65289e, #2ab4bc, #65289e);
+      background-size: 200% 200%;
+      animation: borderGlow 4s ease infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    @keyframes borderGlow {
+      0%,100% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Floating animation */
+    @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+    @keyframes floatSlow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+    .float { animation: float 6s ease-in-out infinite }
+    .float-slow { animation: floatSlow 8s ease-in-out infinite }
+    .float-delay { animation: float 7s ease-in-out 2s infinite }
+
+    /* Pulse glow */
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 0 20px rgba(101,40,158,0.3) }
+      50% { box-shadow: 0 0 40px rgba(101,40,158,0.6) }
+    }
+    .pulse-glow { animation: pulseGlow 3s ease-in-out infinite }
+
+    /* Stats counter */
+    @keyframes countUp { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
+
+    /* Gradient text */
+    .text-gradient {
+      background: linear-gradient(135deg, #bfa6f0, #65289e, #2ab4bc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Marquee for tech stack */
+    @keyframes scroll { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
+    .marquee-track { animation: scroll 30s linear infinite }
+    .marquee-track:hover { animation-play-state: paused }
+
+    /* Popular badge pulse */
+    @keyframes badgePulse { 0%,100% { opacity: 1 } 50% { opacity: 0.7 } }
+  </style>
 </head>
-<body class="bg-white text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-700 antialiased font-sans">
 
   <!-- Nav -->
-  <nav class="bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="#" class="text-xl font-bold text-brand-700">Apex<span class="text-slate-900"> Web</span></a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="#services" class="hover:text-brand-600">Services</a>
-        <a href="#work" class="hover:text-brand-600">Our Work</a>
-        <a href="#process" class="hover:text-brand-600">Process</a>
-        <a href="#contact" class="bg-brand-600 text-white px-5 py-2.5 rounded-lg hover:bg-brand-700 transition-colors">Get Started</a>
+  <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/80 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-2">
+        <img src="logo.svg" alt="Agentix Web" class="h-9 object-contain">
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#services" class="hover:text-brand-600 transition-colors">Services</a>
+        <a href="#work" class="hover:text-brand-600 transition-colors">Portfolio</a>
+        <a href="#process" class="hover:text-brand-600 transition-colors">Process</a>
+        <a href="#contact" class="bg-brand-600 text-white px-5 py-2.5 rounded-lg hover:bg-brand-700 transition-all hover:shadow-lg hover:shadow-brand-500/25">Get Started</a>
       </div>
+      <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-slate-700" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-6 pb-5">
+      <a href="#services" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-3 text-slate-600 hover:text-brand-600">Services</a>
+      <a href="#work" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-3 text-slate-600 hover:text-brand-600">Portfolio</a>
+      <a href="#process" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-3 text-slate-600 hover:text-brand-600">Process</a>
+      <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block mt-2 text-center bg-brand-600 text-white px-5 py-3 rounded-lg font-semibold">Get Started</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-brand-950 via-brand-900 to-slate-900 text-white">
-    <div class="max-w-6xl mx-auto px-4 py-24 md:py-32">
-      <p class="text-brand-300 font-semibold mb-4 tracking-wide uppercase text-sm">Websites for Local Service Businesses</p>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl">
-        Turn your online presence into more calls and estimate requests.
+  <section class="hero-gradient relative min-h-screen flex items-center overflow-hidden">
+    <canvas id="particles" class="absolute inset-0 w-full h-full"></canvas>
+    <div class="grid-overlay absolute inset-0"></div>
+
+    <!-- Floating UI elements -->
+    <div class="absolute top-32 right-10 md:right-20 float opacity-20 md:opacity-40 pointer-events-none">
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10 w-48 md:w-64">
+        <div class="flex gap-1.5 mb-3"><span class="w-2.5 h-2.5 rounded-full bg-red-400"></span><span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span><span class="w-2.5 h-2.5 rounded-full bg-green-400"></span></div>
+        <div class="space-y-2">
+          <div class="h-2 bg-brand-500/40 rounded w-3/4"></div>
+          <div class="h-2 bg-blue-500/30 rounded w-full"></div>
+          <div class="h-2 bg-brand-500/20 rounded w-1/2"></div>
+          <div class="h-6 bg-brand-500/30 rounded w-24 mt-3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-40 right-16 md:right-40 float-delay opacity-15 md:opacity-30 pointer-events-none">
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+        <div class="flex items-center gap-2 text-xs text-green-400 font-mono"><span class="w-2 h-2 rounded-full bg-green-400"></span>Site Live</div>
+        <div class="text-2xl font-bold text-white mt-1">+340%</div>
+        <div class="text-xs text-slate-400">more leads</div>
+      </div>
+    </div>
+    <div class="absolute top-60 left-8 md:left-16 float-slow opacity-15 md:opacity-30 pointer-events-none">
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10 font-mono text-xs text-brand-300">
+        <div class="text-slate-500">// your new site</div>
+        <div>&lt;<span class="text-blue-400">Hero</span> <span class="text-green-400">cta</span>=<span class="text-amber-400">"Call Now"</span> /&gt;</div>
+      </div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 pt-28 pb-20 md:pt-32 md:pb-28">
+      <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-1.5 text-sm text-brand-300 mb-8">
+        <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+        Websites for Local Service Businesses
+      </div>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] max-w-4xl tracking-tight">
+        Your work speaks for itself.<br>
+        <span class="text-gradient">Your website should too.</span>
       </h1>
-      <p class="mt-6 text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
-        Your reputation is strong. Your reviews are great. But when people search for you online, does your website match the quality of your work?
+      <p class="mt-6 text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed">
+        We build high-converting websites for roofers, contractors, and service businesses that turn search traffic into phone calls and estimate requests.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4">
-        <a href="#contact" class="bg-brand-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-brand-500 transition-colors text-center">
-          Get a Free Website Mockup
+        <a href="#contact" class="group bg-brand-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-500 transition-all hover:shadow-xl hover:shadow-brand-500/25 text-center flex items-center justify-center gap-2">
+          Get a Free Mockup
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
+        <a href="#work" class="text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/5 transition-all text-center">
+          See Our Work
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom gradient fade -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent"></div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="relative -mt-16 z-10">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="bg-white backdrop-blur-xl border border-slate-200 rounded-2xl p-8 md:p-10 shadow-xl shadow-slate-200/50 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center reveal">
+          <div class="text-3xl md:text-4xl font-black text-slate-900" data-count="50">0+</div>
+          <div class="text-sm text-slate-500 mt-1">Sites Launched</div>
+        </div>
+        <div class="text-center reveal">
+          <div class="text-3xl md:text-4xl font-black text-slate-900" data-count="340">0%</div>
+          <div class="text-sm text-slate-500 mt-1">Avg. Lead Increase</div>
+        </div>
+        <div class="text-center reveal">
+          <div class="text-3xl md:text-4xl font-black text-slate-900">7</div>
+          <div class="text-sm text-slate-500 mt-1">Day Delivery</div>
+        </div>
+        <div class="text-center reveal">
+          <div class="text-3xl md:text-4xl font-black text-slate-900">5.0</div>
+          <div class="text-sm text-slate-500 mt-1">Google Rating</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Problem -->
-  <section class="py-20 bg-slate-50">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">You're great at what you do.<br>Does your website show it?</h2>
-      <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-        Most local service businesses lose customers because their website is outdated, hard to use on a phone, or doesn't make it easy to call or request an estimate. We fix that.
+  <!-- Problem Statement -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <h2 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-6">
+        You're great at what you do.<br>
+        <span class="text-slate-400">Does your website show it?</span>
+      </h2>
+      <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        Most local service businesses lose customers every day because their website is outdated, broken on phones, or makes it impossible to call or request an estimate. We fix that.
       </p>
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="py-20">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-14">Simple Packages, Real Results</h2>
-      <div class="grid md:grid-cols-3 gap-8">
+  <!-- Services / Pricing -->
+  <section id="services" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-100 via-white to-slate-50"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 text-sm text-brand-600 mb-4">Pricing</div>
+        <h2 class="text-3xl md:text-5xl font-black text-slate-900">Simple Packages, Real Results</h2>
+        <p class="mt-4 text-slate-500 text-lg max-w-xl mx-auto">No hidden fees. No long contracts. Just websites that work.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <div class="border border-slate-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
-          <h3 class="text-xl font-bold text-slate-900 mb-1">Launch</h3>
-          <p class="text-3xl font-bold text-brand-600 mb-4">$999</p>
-          <p class="text-slate-600 mb-6">A professional 5-page website built for your business in 7 days or less.</p>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Mobile-optimized design</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Click-to-call &amp; contact form</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Basic SEO setup</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Google Analytics</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> SSL &amp; fast hosting</li>
+        <!-- Launch -->
+        <div class="glow-card bg-white border border-slate-200 rounded-2xl p-7 shadow-sm reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">Launch</h3>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-black text-slate-900">$1,197</span>
+          </div>
+          <p class="text-slate-500 text-sm mb-6">A professional 5-page website built for your business in 7 days or less.</p>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Mobile-optimized design</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Click-to-call &amp; contact form</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Custom brand design</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Photo &amp; content sourcing</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>1 round of revisions</li>
           </ul>
+          <a href="#contact" class="block mt-6 text-center border border-slate-300 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-all text-sm">Get Started</a>
         </div>
 
-        <div class="border-2 border-brand-600 rounded-xl p-8 shadow-lg relative">
-          <span class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</span>
-          <h3 class="text-xl font-bold text-slate-900 mb-1">Growth</h3>
-          <p class="text-3xl font-bold text-brand-600 mb-4">$1,799</p>
-          <p class="text-slate-600 mb-6">Everything in Launch, plus conversion optimization and individual service pages.</p>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Up to 10 pages</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Professional copywriting</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Google Search Console</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Reviews &amp; testimonials</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Booking integration</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Service area pages</li>
+        <!-- Growth (Popular) -->
+        <div class="glow-card gradient-border p-7 relative reveal" style="animation-delay: 0.1s">
+          <span class="absolute -top-3 left-6 bg-gradient-to-r from-brand-500 to-accent-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg shadow-brand-500/30">MOST POPULAR</span>
+          <h3 class="text-lg font-bold text-slate-900 mb-1">Growth</h3>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-black text-slate-900">$3,197</span>
+          </div>
+          <p class="text-slate-500 text-sm mb-6">Everything in Launch, plus conversion optimization and individual service pages.</p>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Up to 10 pages</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Professional copywriting</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Reviews &amp; testimonials</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Booking integration</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Service area pages</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>2 rounds of revisions</li>
           </ul>
+          <a href="#contact" class="block mt-6 text-center bg-brand-600 text-white py-3 rounded-xl font-semibold hover:bg-brand-500 transition-all text-sm shadow-lg shadow-brand-500/20">Get Started</a>
         </div>
 
-        <div class="border border-slate-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
-          <h3 class="text-xl font-bold text-slate-900 mb-1">Managed</h3>
-          <p class="text-slate-600 mb-1"><span class="text-3xl font-bold text-brand-600">$149</span>/month</p>
-          <p class="text-slate-600 mb-6">We handle everything so you can focus on running your business.</p>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Hosting &amp; security</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Monthly updates &amp; edits</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Uptime monitoring</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Performance reports</li>
-            <li class="flex items-center gap-2"><span class="text-brand-600">&#10003;</span> Priority support</li>
+        <!-- Managed -->
+        <div class="glow-card bg-white border border-slate-200 rounded-2xl p-7 shadow-sm reveal" style="animation-delay: 0.2s">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">Managed</h3>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-black text-slate-900">$249</span>
+            <span class="text-slate-500 text-sm">/month</span>
+          </div>
+          <p class="text-slate-500 text-sm mb-6">We handle everything so you can focus on running your business.</p>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Hosting &amp; security</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Monthly updates &amp; edits</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Uptime monitoring</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Performance reports</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Priority support</li>
           </ul>
+          <a href="#contact" class="block mt-6 text-center border border-slate-300 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-all text-sm">Get Started</a>
+        </div>
+
+        <!-- SEO -->
+        <div class="glow-card bg-white border border-slate-200 rounded-2xl p-7 shadow-sm reveal" style="animation-delay: 0.3s">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">SEO</h3>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-black text-slate-900">$1,097</span>
+            <span class="text-slate-500 text-sm">/month</span>
+          </div>
+          <p class="text-slate-500 text-sm mb-6">Get found by more customers searching for your services in your area.</p>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Google Analytics setup</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Google Search Console</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Google Business Profile</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Local keyword research</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>On-page optimization</li>
+            <li class="flex items-center gap-2.5"><svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Monthly ranking reports</li>
+          </ul>
+          <a href="#contact" class="block mt-6 text-center border border-slate-300 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-all text-sm">Get Started</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Work -->
-  <section id="work" class="py-20 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Built for Local Service Businesses</h2>
-      <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">Fast, mobile-optimized websites designed to turn visitors into calls and estimate requests.</p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="https://brilliant-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-[#0b1520] to-[#1f2e42] rounded-xl h-56 flex flex-col items-center justify-center text-white font-bold text-lg hover:scale-[1.02] transition-transform shadow-md">
-          <span class="text-[#f7be38] text-2xl mb-1">Brilliant</span> Roofing
-          <span class="text-xs text-slate-400 mt-2 font-normal">Round Lake Beach, IL</span>
-          <span class="text-xs text-[#f7be38] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">View Live Site →</span>
-        </a>
-        <div class="bg-gradient-to-br from-green-900 to-green-700 rounded-xl h-56 flex flex-col items-center justify-center text-white font-bold text-lg">
-          HVAC Demo
-          <span class="text-xs text-green-300 mt-2 font-normal">Coming Soon</span>
-        </div>
-        <div class="bg-gradient-to-br from-orange-900 to-orange-700 rounded-xl h-56 flex flex-col items-center justify-center text-white font-bold text-lg">
-          Plumbing Demo
-          <span class="text-xs text-orange-300 mt-2 font-normal">Coming Soon</span>
-        </div>
+  <!-- Tech Stack Marquee -->
+  <section class="py-12 border-y border-slate-200 overflow-hidden bg-white">
+    <div class="flex whitespace-nowrap">
+      <div class="marquee-track flex items-center gap-12 text-slate-600 text-sm font-medium">
+        <span class="flex items-center gap-2"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19.5h20L12 2zm0 4l7 13.5H5L12 6z"/></svg>Next.js</span>
+        <span class="flex items-center gap-2"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>React</span>
+        <span class="flex items-center gap-2"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>Tailwind CSS</span>
+        <span>Vercel</span>
+        <span>Google Analytics</span>
+        <span>Search Console</span>
+        <span>Responsive Design</span>
+        <span>Core Web Vitals</span>
+        <span>SSL/HTTPS</span>
+        <span>Schema Markup</span>
+        <span class="flex items-center gap-2"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19.5h20L12 2zm0 4l7 13.5H5L12 6z"/></svg>Next.js</span>
+        <span class="flex items-center gap-2"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>React</span>
+        <span class="flex items-center gap-2"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>Tailwind CSS</span>
+        <span>Vercel</span>
+        <span>Google Analytics</span>
+        <span>Search Console</span>
+        <span>Responsive Design</span>
+        <span>Core Web Vitals</span>
+        <span>SSL/HTTPS</span>
+        <span>Schema Markup</span>
       </div>
-      <p class="mt-8 text-slate-500 text-sm">Each client receives a fully customized design built around their brand, services, and service area.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="work" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 text-sm text-brand-600 mb-4">Portfolio</div>
+        <h2 class="text-3xl md:text-5xl font-black text-slate-900">Built for Businesses Like Yours</h2>
+        <p class="mt-4 text-slate-500 text-lg max-w-xl mx-auto">Every site is custom-designed with unique copy, colors, and layout. No templates.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <a href="https://contractor-split.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal">
+          <div class="h-48 bg-gradient-to-br from-[#3d2c1e] to-[#1a120b] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#d97706]">Ironclad</span> Roofing</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Ironclad Roofing &amp; Exteriors</h3>
+            <p class="text-sm text-slate-500 mb-3">Denver, CO</p>
+            <p class="text-sm text-slate-500">Cream &amp; amber palette. Serif headings, 50/50 split layouts, inline hero form, credential badges.</p>
+          </div>
+        </a>
+
+        <a href="https://contractor-edge-seven.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.1s">
+          <div class="h-48 bg-gradient-to-br from-[#111111] to-[#0a0a0a] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black">TITAN <span class="text-[#dc2626]">STORM</span></span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Titan Storm Roofing</h3>
+            <p class="text-sm text-slate-500 mb-3">Dallas, TX</p>
+            <p class="text-sm text-slate-500">Dark theme &amp; red accents. Condensed uppercase headings, angled dividers, storm damage focus.</p>
+          </div>
+        </a>
+
+        <a href="https://contractor-trust-five.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.2s">
+          <div class="h-48 bg-gradient-to-br from-[#0f172a] to-[#1e293b] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#059669]">Heritage</span> Home</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Heritage Home Roofing</h3>
+            <p class="text-sm text-slate-500 mb-3">Atlanta, GA</p>
+            <p class="text-sm text-slate-500">Navy &amp; green palette. No hero image, trust-first editorial layout, Google review cards, inline forms.</p>
+          </div>
+        </a>
+
+        <a href="https://summit-heating-cooling.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.3s">
+          <div class="h-48 bg-gradient-to-br from-[#0c1a3d] to-[#1e3a5f] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#fb923c]">Summit</span> HVAC</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Summit Heating &amp; Cooling</h3>
+            <p class="text-sm text-slate-500 mb-3">Naperville, IL</p>
+            <p class="text-sm text-slate-500">Blue &amp; orange palette. Stock photo gallery, 5 HVAC services, animated counters, 24/7 emergency.</p>
+          </div>
+        </a>
+
+        <a href="https://contractor-v2.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.4s">
+          <div class="h-48 bg-gradient-to-br from-[#0f172a] to-[#1e293b] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#10b981]">Apex</span> Roofing</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Apex Roofing Co.</h3>
+            <p class="text-sm text-slate-500 mb-3">Chicago, IL</p>
+            <p class="text-sm text-slate-500">Slate &amp; emerald palette. Cinematic hero, image card services, numbered timeline, DM Sans typography.</p>
+          </div>
+        </a>
+
+        <a href="https://courtesy-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.5s">
+          <div class="h-48 bg-gradient-to-br from-[#2d2926] to-[#1c1917] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#e17055]">Courtesy</span> Roofing</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Courtesy Roofing &amp; Landscaping</h3>
+            <p class="text-sm text-slate-500 mb-3">Chicago, IL</p>
+            <p class="text-sm text-slate-500">Charcoal &amp; terracotta palette. Video hero background, dual-trade services, 4 service pages.</p>
+          </div>
+        </a>
+
+        <a href="https://brilliant-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.6s">
+          <div class="h-48 bg-gradient-to-br from-[#0b1520] to-[#1f2e42] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#f7be38]">Brilliant</span> Roofing</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Brilliant Roofing</h3>
+            <p class="text-sm text-slate-500 mb-3">Round Lake Beach, IL</p>
+            <p class="text-sm text-slate-500">Navy &amp; amber palette. Animated stats, expandable service cards, split layouts.</p>
+          </div>
+        </a>
+
+        <a href="https://ramirez-roofing-harvey.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.7s">
+          <div class="h-48 bg-gradient-to-br from-[#1e3a5f] to-[#0f2744] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#f59e0b]">Ramirez</span> Roofing</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Ramirez Roofing Inc</h3>
+            <p class="text-sm text-slate-500 mb-3">Harvey, IL</p>
+            <p class="text-sm text-slate-500">Navy &amp; amber palette. Full gallery with 30+ project photos, 4 service pages, Google reviews integration.</p>
+          </div>
+        </a>
+
+        <a href="https://eliot-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="group glow-card bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.8s">
+          <div class="h-48 bg-gradient-to-br from-[#1a3a2a] to-[#0f2518] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="relative text-white text-3xl font-black"><span class="text-[#d4a843]">Eliot</span> Roofing</span>
+            <div class="absolute bottom-3 right-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">View Site &rarr;</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Eliot Roofing Company</h3>
+            <p class="text-sm text-slate-500 mb-3">Blue Island, IL</p>
+            <p class="text-sm text-slate-500">Forest green &amp; gold palette. Custom logo, centered hero layout, emergency service focus.</p>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
 
   <!-- Process -->
-  <section id="process" class="py-20">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-14">How It Works</h2>
-      <div class="space-y-10">
-        <div class="flex gap-6 items-start">
-          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">1</div>
-          <div>
+  <section id="process" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-100 via-white to-slate-50"></div>
+    <div class="relative max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 text-sm text-brand-600 mb-4">How It Works</div>
+        <h2 class="text-3xl md:text-5xl font-black text-slate-900">From First Call to Launch in 7 Days</h2>
+      </div>
+      <div class="space-y-0">
+
+        <div class="flex gap-6 items-start reveal">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-accent-500 text-white rounded-xl flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-brand-500/30">1</div>
+            <div class="w-px h-16 bg-gradient-to-b from-brand-500/50 to-transparent mt-2"></div>
+          </div>
+          <div class="pb-12">
             <h3 class="text-xl font-bold text-slate-900">Free Online Presence Audit</h3>
-            <p class="text-slate-600 mt-1">We review your Google listing, website, reviews, and competitors — then show you exactly what's working and what's costing you customers.</p>
+            <p class="text-slate-500 mt-2">We review your Google listing, website, reviews, and competitors. Then show you exactly what's working and what's costing you customers.</p>
           </div>
         </div>
-        <div class="flex gap-6 items-start">
-          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">2</div>
-          <div>
+
+        <div class="flex gap-6 items-start reveal">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-accent-500 text-white rounded-xl flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-brand-500/30">2</div>
+            <div class="w-px h-16 bg-gradient-to-b from-brand-500/50 to-transparent mt-2"></div>
+          </div>
+          <div class="pb-12">
             <h3 class="text-xl font-bold text-slate-900">Custom Website Mockup</h3>
-            <p class="text-slate-600 mt-1">We design a homepage concept for your business — free, no commitment. You see what your new website could look like before you spend a dollar.</p>
+            <p class="text-slate-500 mt-2">We design a homepage concept for your business, free, no commitment. You see what your new website could look like before you spend a dollar.</p>
           </div>
         </div>
-        <div class="flex gap-6 items-start">
-          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">3</div>
-          <div>
-            <h3 class="text-xl font-bold text-slate-900">Build & Launch in 7 Days</h3>
-            <p class="text-slate-600 mt-1">Once approved, we build your site fast. You review it, we make revisions, and you're live within a week.</p>
+
+        <div class="flex gap-6 items-start reveal">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-accent-500 text-white rounded-xl flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-brand-500/30">3</div>
+            <div class="w-px h-16 bg-gradient-to-b from-brand-500/50 to-transparent mt-2"></div>
+          </div>
+          <div class="pb-12">
+            <h3 class="text-xl font-bold text-slate-900">Build &amp; Launch in 7 Days</h3>
+            <p class="text-slate-500 mt-2">Once approved, we build your site fast. You review it, we make revisions, and you're live within a week.</p>
           </div>
         </div>
-        <div class="flex gap-6 items-start">
-          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0">4</div>
+
+        <div class="flex gap-6 items-start reveal">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-accent-500 text-white rounded-xl flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-brand-500/30">4</div>
+          </div>
           <div>
             <h3 class="text-xl font-bold text-slate-900">Start Getting More Calls</h3>
-            <p class="text-slate-600 mt-1">Your new website works for you 24/7 — turning search traffic into phone calls and estimate requests on autopilot.</p>
+            <p class="text-slate-500 mt-2">Your new website works for you 24/7, turning search traffic into phone calls and estimate requests on autopilot.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-20 bg-brand-950 text-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Talk About Your Business</h2>
-        <p class="text-slate-300 text-lg">Tell us a bit about your business and we'll send you a free audit and website mockup.</p>
+  <section id="contact" class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 hero-gradient opacity-50"></div>
+    <div class="grid-overlay absolute inset-0 opacity-50"></div>
+    <div class="relative max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12 reveal">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm text-brand-300 mb-4">Get Started</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Let's Build Something That Works</h2>
+        <p class="text-slate-300 text-lg">Tell us about your business. We'll send you a free audit and custom mockup within 48 hours.</p>
       </div>
-      <form class="max-w-xl mx-auto space-y-5" onsubmit="event.preventDefault();this.innerHTML='<div class=\'text-center py-8\'><h3 class=\'text-2xl font-bold text-brand-300 mb-2\'>Thank you!</h3><p class=\'text-slate-300\'>We\'ll review your business and get back to you within 24 hours.</p></div>'">
-        <input name="name" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:ring-2 focus:ring-brand-500 outline-none">
-        <input name="business" placeholder="Business Name" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:ring-2 focus:ring-brand-500 outline-none">
-        <input name="phone" type="tel" placeholder="Phone Number" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:ring-2 focus:ring-brand-500 outline-none">
-        <input name="email" type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:ring-2 focus:ring-brand-500 outline-none">
-        <input name="website" placeholder="Current Website (if any)" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:ring-2 focus:ring-brand-500 outline-none">
-        <select name="industry" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-brand-500 outline-none">
-          <option value="" class="text-slate-900">Your Industry</option>
-          <option value="roofing" class="text-slate-900">Roofing</option>
-          <option value="hvac" class="text-slate-900">HVAC</option>
-          <option value="plumbing" class="text-slate-900">Plumbing</option>
-          <option value="landscaping" class="text-slate-900">Landscaping</option>
-          <option value="electrical" class="text-slate-900">Electrical</option>
-          <option value="other" class="text-slate-900">Other</option>
+      <form class="max-w-xl mx-auto space-y-4 reveal" onsubmit="event.preventDefault();this.innerHTML='<div class=\'text-center py-12\'><div class=\'w-16 h-16 bg-brand-500/20 rounded-full flex items-center justify-center mx-auto mb-4\'><svg class=\'w-8 h-8 text-brand-400\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M5 13l4 4L19 7\'/></svg></div><h3 class=\'text-2xl font-bold text-white mb-2\'>Thank you!</h3><p class=\'text-slate-400\'>We\'ll review your business and get back to you within 48 hours.</p></div>'">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input name="name" placeholder="Your Name" required class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all">
+          <input name="business" placeholder="Business Name" required class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all">
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input name="phone" type="tel" placeholder="Phone Number" required class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all">
+          <input name="email" type="email" placeholder="Email Address" class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all">
+        </div>
+        <input name="website" placeholder="Current Website (if any)" class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all">
+        <select name="industry" class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-slate-400 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all">
+          <option value="" class="bg-slate-900">Your Industry</option>
+          <option value="roofing" class="bg-slate-900">Roofing</option>
+          <option value="hvac" class="bg-slate-900">HVAC</option>
+          <option value="plumbing" class="bg-slate-900">Plumbing</option>
+          <option value="landscaping" class="bg-slate-900">Landscaping</option>
+          <option value="electrical" class="bg-slate-900">Electrical</option>
+          <option value="other" class="bg-slate-900">Other</option>
         </select>
-        <button type="submit" class="w-full bg-brand-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-brand-500 transition-colors cursor-pointer">
-          Send — It's Free
+        <button type="submit" class="w-full bg-gradient-to-r from-brand-600 to-accent-600 text-white py-4 rounded-xl font-bold text-lg hover:from-brand-500 hover:to-accent-500 transition-all cursor-pointer shadow-xl shadow-brand-500/20">
+          Get Your Free Mockup
         </button>
+        <p class="text-center text-slate-600 text-xs">No commitment. No spam. Just a custom mockup for your business.</p>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 text-sm py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <p>&copy; 2026 Apex Web Solutions. All rights reserved.</p>
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-2">
+          <img src="logo.svg" alt="Agentix Web" class="h-8 object-contain">
+        </div>
+        <div class="flex gap-8 text-sm text-slate-500">
+          <a href="#services" class="hover:text-brand-600 transition-colors">Services</a>
+          <a href="#work" class="hover:text-brand-600 transition-colors">Portfolio</a>
+          <a href="#process" class="hover:text-brand-600 transition-colors">Process</a>
+          <a href="#contact" class="hover:text-brand-600 transition-colors">Contact</a>
+        </div>
+        <p class="text-sm text-slate-400">&copy; 2026 Agentix Web Solutions</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Particle Canvas + Scroll Reveal Script -->
+  <script>
+    // Particle background
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let w, h;
+
+    function resize() {
+      w = canvas.width = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+      constructor() { this.reset() }
+      reset() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.r = Math.random() * 2 + 0.5;
+        this.a = Math.random() * 0.4 + 0.1;
+        this.cyan = Math.random() > 0.5;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.cyan ? `rgba(42, 180, 188, ${this.a})` : `rgba(101, 40, 158, ${this.a})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+    function drawLines() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(42, 180, 188, ${0.06 * (1 - dist / 150)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => { p.update(); p.draw() });
+      drawLines();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Counter animation
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.count);
+        if (!target) return;
+        let current = 0;
+        const suffix = el.textContent.includes('%') ? '%' : '+';
+        const step = Math.ceil(target / 40);
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer) }
+          el.textContent = current + suffix;
+        }, 30);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+  </script>
 
 </body>
 </html>
