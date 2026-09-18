@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentix Web Solutions | Websites for Service Businesses</title>
+  <meta name="description" content="We build websites that turn searches into phone calls. Designed for roofers, electricians, HVAC techs, plumbers, and every trade in between.">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Bodoni Moda"', 'Georgia', 'serif'],
+            sans: ['Sora', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) }
+    .reveal.visible { opacity: 1; transform: translateY(0) }
+    .clip-reveal {
+      clip-path: inset(100% 0 0 0);
+      transform: translateY(20px);
+      transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .clip-reveal.visible { clip-path: inset(0 0 0 0); transform: translateY(0) }
+    .portfolio-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) }
+    .portfolio-card:hover { transform: translateY(-3px) }
+    .portfolio-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.4s ease;
+      pointer-events: none;
+    }
+    .portfolio-card:hover::after { border-color: #c4a882 }
+    .gold-line { width: 48px; height: 1px; background: #c4a882 }
+    .nav-scrolled { background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #1c1c1c }
+    .input-line {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #1c1c1c;
+      padding: 16px 0;
+      width: 100%;
+      color: #f0ede8;
+      font-family: 'Sora', system-ui, sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .input-line:focus { border-color: #c4a882 }
+    .input-line::placeholder { color: #4a4a45 }
+    select.input-line {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7770' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0 center;
+      padding-right: 20px;
+    }
+    select.input-line option { background: #0a0a0a; color: #f0ede8 }
+    .mobile-overlay { opacity: 0; pointer-events: none; transition: opacity 0.4s ease }
+    .mobile-overlay.open { opacity: 1; pointer-events: all }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body class="bg-black text-[#f0ede8] antialiased font-sans">
+
+  <!-- Nav -->
+  <nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3">
+        <img src="logo.svg" alt="Agentix" class="h-8 invert opacity-90">
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#work" class="text-xs tracking-[0.2em] uppercase text-[#7a7770] hover:text-[#f0ede8] transition-colors">Work</a>
+        <a href="#pricing" class="text-xs tracking-[0.2em] uppercase text-[#7a7770] hover:text-[#f0ede8] transition-colors">Pricing</a>
+        <a href="#process" class="text-xs tracking-[0.2em] uppercase text-[#7a7770] hover:text-[#f0ede8] transition-colors">Process</a>
+        <a href="#contact" class="text-xs tracking-[0.2em] uppercase text-[#c4a882] border border-[#c4a882]/30 px-5 py-2.5 hover:border-[#c4a882] hover:text-[#d4bc9a] transition-all">Start a Project</a>
+      </div>
+      <button id="menu-toggle" class="md:hidden text-[#7a7770]" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M4 7h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-overlay fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center gap-10">
+    <button id="menu-close" class="absolute top-5 right-6 text-[#7a7770]" aria-label="Close">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <a href="#work" class="mobile-link text-2xl font-serif tracking-wide text-[#f0ede8]">Work</a>
+    <a href="#pricing" class="mobile-link text-2xl font-serif tracking-wide text-[#f0ede8]">Pricing</a>
+    <a href="#process" class="mobile-link text-2xl font-serif tracking-wide text-[#f0ede8]">Process</a>
+    <a href="#contact" class="mobile-link text-2xl font-serif tracking-wide text-[#c4a882]">Start a Project</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,_rgba(196,168,130,0.04),_transparent_60%)]"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-32">
+      <div class="mb-8 clip-reveal" style="transition-delay:0s">
+        <div class="gold-line mb-6"></div>
+        <span class="text-xs tracking-[0.3em] uppercase text-[#7a7770]">Agentix Web Solutions</span>
+      </div>
+      <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] leading-[1.05] tracking-tight mb-8">
+        <span class="block clip-reveal" style="transition-delay:0.12s">We build websites</span>
+        <span class="block clip-reveal" style="transition-delay:0.24s">that make phones</span>
+        <span class="block clip-reveal text-[#c4a882]" style="transition-delay:0.36s"><em>ring.</em></span>
+      </h1>
+      <p class="text-[#7a7770] text-lg md:text-xl max-w-lg leading-relaxed clip-reveal font-light" style="transition-delay:0.52s">
+        For roofers, electricians, HVAC techs, plumbers, and every trade that keeps neighborhoods running.
+      </p>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 clip-reveal" style="transition-delay:0.66s">
+        <a href="#work" class="border border-[#f0ede8] text-[#f0ede8] px-8 py-4 text-xs tracking-[0.15em] uppercase hover:bg-[#f0ede8] hover:text-black transition-all text-center">View Our Work</a>
+        <a href="#contact" class="border border-[#1c1c1c] text-[#7a7770] px-8 py-4 text-xs tracking-[0.15em] uppercase hover:border-[#c4a882] hover:text-[#c4a882] transition-all text-center">Start a Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-y border-[#1c1c1c]">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4">
+      <div class="px-6 lg:px-12 py-10 md:border-r border-[#1c1c1c] border-b md:border-b-0">
+        <div class="text-3xl md:text-4xl font-serif text-[#f0ede8]">10</div>
+        <div class="text-xs tracking-[0.15em] uppercase text-[#7a7770] mt-2">Sites Generating Leads</div>
+      </div>
+      <div class="px-6 lg:px-12 py-10 md:border-r border-[#1c1c1c] border-b md:border-b-0">
+        <div class="text-3xl md:text-4xl font-serif text-[#f0ede8]">7</div>
+        <div class="text-xs tracking-[0.15em] uppercase text-[#7a7770] mt-2">Days to Launch</div>
+      </div>
+      <div class="px-6 lg:px-12 py-10 md:border-r border-[#1c1c1c]">
+        <div class="text-3xl md:text-4xl font-serif text-[#f0ede8]">$0</div>
+        <div class="text-xs tracking-[0.15em] uppercase text-[#7a7770] mt-2">For Your Mockup</div>
+      </div>
+      <div class="px-6 lg:px-12 py-10">
+        <div class="text-3xl md:text-4xl font-serif text-[#f0ede8]">100%</div>
+        <div class="text-xs tracking-[0.15em] uppercase text-[#7a7770] mt-2">Custom Built</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="work" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="flex items-end justify-between mb-16 reveal">
+        <div>
+          <div class="gold-line mb-6"></div>
+          <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight">Selected Work</h2>
+        </div>
+        <span class="hidden md:block text-xs tracking-[0.2em] uppercase text-[#7a7770]">10 Projects</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1c1c1c] reveal">
+
+        <a href="https://contractor-split.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative md:col-span-2 h-72 md:h-80 bg-gradient-to-br from-[#0d0b08] to-[#1a1610] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#d97706]">Ironclad</span> Roofing</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Denver, CO</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://contractor-edge-seven.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative h-72 md:h-80 bg-gradient-to-br from-[#0a0a0a] to-[#111] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2">Titan <span class="text-[#dc2626]">Storm</span></h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Dallas, TX</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://contractor-trust-five.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative h-72 md:h-80 bg-gradient-to-br from-[#060d08] to-[#0a150d] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#059669]">Heritage</span> Home</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Atlanta, GA</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://dobbins-electric.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative md:col-span-2 h-72 md:h-80 bg-gradient-to-br from-[#070b14] to-[#0e1729] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#eab308]">Dobbins</span> Electric</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Tulsa, OK</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://summit-heating-cooling.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative h-72 md:h-72 bg-gradient-to-br from-[#060c1e] to-[#0c1a3d] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#fb923c]">Summit</span> HVAC</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Naperville, IL</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://contractor-v2.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative h-72 md:h-72 bg-gradient-to-br from-[#080a0f] to-[#0f172a] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#10b981]">Apex</span> Roofing</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Chicago, IL</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://courtesy-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative h-72 md:h-72 bg-gradient-to-br from-[#0d0b09] to-[#1c1917] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#e17055]">Courtesy</span> Roofing</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Chicago, IL</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://brilliant-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative md:col-span-2 h-72 md:h-72 bg-gradient-to-br from-[#060a10] to-[#0b1520] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#f7be38]">Brilliant</span> Roofing</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Round Lake Beach, IL</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://ramirez-roofing-harvey.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative h-72 md:h-72 bg-gradient-to-br from-[#0a1525] to-[#0f2744] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#f59e0b]">Ramirez</span> Roofing</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Harvey, IL</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+        <a href="https://eliot-roofing.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card relative md:col-span-3 h-48 bg-gradient-to-br from-[#0a1a12] to-[#0f2518] flex flex-col justify-end p-8 group">
+          <h3 class="font-serif text-2xl md:text-3xl text-[#f0ede8] mb-2"><span class="text-[#d4a843]">Eliot</span> Roofing</h3>
+          <div class="flex items-center gap-4 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+            <span>Blue Island, IL</span>
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity text-[#c4a882]">View Project &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="py-24 md:py-32 border-t border-[#1c1c1c]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-24">
+        <div class="reveal">
+          <div class="gold-line mb-6"></div>
+          <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-10">Why Agentix</h2>
+          <p class="font-serif italic text-2xl md:text-3xl text-[#c4a882] leading-snug">
+            Every pixel exists for one reason&mdash;to turn a visitor into a phone call.
+          </p>
+        </div>
+        <div class="space-y-10 reveal">
+          <p class="text-[#7a7770] text-lg leading-relaxed font-light">
+            We build exclusively for local service businesses. We study your industry, your competitors, and your customers before we write a single line of code.
+          </p>
+          <div class="grid grid-cols-2 gap-x-8 gap-y-10">
+            <div>
+              <div class="text-xs tracking-[0.2em] uppercase text-[#c4a882] mb-3">Conversion</div>
+              <p class="text-sm text-[#7a7770] leading-relaxed">Click-to-call buttons, inline estimate forms, and copy written for homeowners.</p>
+            </div>
+            <div>
+              <div class="text-xs tracking-[0.2em] uppercase text-[#c4a882] mb-3">Trust</div>
+              <p class="text-sm text-[#7a7770] leading-relaxed">Google review integration, credential badges, and real testimonials where they matter most.</p>
+            </div>
+            <div>
+              <div class="text-xs tracking-[0.2em] uppercase text-[#c4a882] mb-3">Speed</div>
+              <p class="text-sm text-[#7a7770] leading-relaxed">Sub-second loads, 90+ Lighthouse scores, mobile-first for the 70% of visitors on their phone.</p>
+            </div>
+            <div>
+              <div class="text-xs tracking-[0.2em] uppercase text-[#c4a882] mb-3">Ownership</div>
+              <p class="text-sm text-[#7a7770] leading-relaxed">You own your code, domain, and content. No lock-in, no surprise fees, no proprietary builders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 md:py-32 border-t border-[#1c1c1c]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="mb-16 reveal">
+        <div class="gold-line mb-6"></div>
+        <h2 class="font-serif text-4xl md:text-5xl tracking-tight">Investment</h2>
+        <p class="text-[#7a7770] mt-4 text-lg font-light">Flat pricing, month-to-month if you want it, everything spelled out upfront.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1c1c1c] reveal">
+        <div class="bg-black p-8 lg:p-10">
+          <div class="text-xs tracking-[0.2em] uppercase text-[#7a7770] mb-6">Launch</div>
+          <div class="font-serif text-4xl text-[#f0ede8] mb-2">$1,197</div>
+          <p class="text-sm text-[#7a7770] mb-8 font-light">Professional 5-page website built in 7 days.</p>
+          <ul class="space-y-3 text-sm text-[#7a7770] mb-8">
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Mobile-optimized</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Click-to-call &amp; form</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Custom brand design</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Photo &amp; content sourcing</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>1 round of revisions</li>
+          </ul>
+          <a href="#contact" class="block text-center border border-[#1c1c1c] text-[#7a7770] py-3 text-xs tracking-[0.15em] uppercase hover:border-[#c4a882] hover:text-[#c4a882] transition-all">Get Started</a>
+        </div>
+
+        <div class="bg-[#0a0a0a] p-8 lg:p-10 relative">
+          <div class="absolute top-0 left-0 right-0 h-px bg-[#c4a882]"></div>
+          <div class="text-xs tracking-[0.2em] uppercase text-[#c4a882] mb-6">Growth</div>
+          <div class="font-serif text-4xl text-[#f0ede8] mb-2">$3,197</div>
+          <p class="text-sm text-[#7a7770] mb-8 font-light">Everything in Launch plus conversion optimization.</p>
+          <ul class="space-y-3 text-sm text-[#7a7770] mb-8">
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Up to 10 pages</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Professional copywriting</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Reviews &amp; testimonials</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Booking integration</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Service area pages</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>2 rounds of revisions</li>
+          </ul>
+          <a href="#contact" class="block text-center border border-[#c4a882] text-[#c4a882] py-3 text-xs tracking-[0.15em] uppercase hover:bg-[#c4a882] hover:text-black transition-all">Get Started</a>
+        </div>
+
+        <div class="bg-black p-8 lg:p-10">
+          <div class="text-xs tracking-[0.2em] uppercase text-[#7a7770] mb-6">Managed</div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-serif text-4xl text-[#f0ede8]">$249</span>
+            <span class="text-sm text-[#7a7770]">/mo</span>
+          </div>
+          <p class="text-sm text-[#7a7770] mb-8 mt-2 font-light">We handle everything so you can focus on your business.</p>
+          <ul class="space-y-3 text-sm text-[#7a7770] mb-8">
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Hosting &amp; security</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Monthly updates &amp; edits</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Uptime monitoring</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Performance reports</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Priority support</li>
+          </ul>
+          <a href="#contact" class="block text-center border border-[#1c1c1c] text-[#7a7770] py-3 text-xs tracking-[0.15em] uppercase hover:border-[#c4a882] hover:text-[#c4a882] transition-all">Get Started</a>
+        </div>
+
+        <div class="bg-black p-8 lg:p-10">
+          <div class="text-xs tracking-[0.2em] uppercase text-[#7a7770] mb-6">SEO</div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-serif text-4xl text-[#f0ede8]">$1,097</span>
+            <span class="text-sm text-[#7a7770]">/mo</span>
+          </div>
+          <p class="text-sm text-[#7a7770] mb-8 mt-2 font-light">Get found by customers searching your services.</p>
+          <ul class="space-y-3 text-sm text-[#7a7770] mb-8">
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Google Analytics setup</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Search Console</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Google Business Profile</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Local keyword research</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>On-page optimization</li>
+            <li class="flex items-start gap-3"><span class="text-[#c4a882] mt-0.5">&mdash;</span>Monthly ranking reports</li>
+          </ul>
+          <a href="#contact" class="block text-center border border-[#1c1c1c] text-[#7a7770] py-3 text-xs tracking-[0.15em] uppercase hover:border-[#c4a882] hover:text-[#c4a882] transition-all">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-24 md:py-32 border-t border-[#1c1c1c]">
+    <div class="max-w-5xl mx-auto px-6 lg:px-12">
+      <div class="mb-16 reveal">
+        <div class="gold-line mb-6"></div>
+        <h2 class="font-serif text-4xl md:text-5xl tracking-tight">How It Works</h2>
+      </div>
+      <div>
+        <div class="py-12 border-b border-[#1c1c1c] reveal">
+          <div class="w-6 h-px bg-[#c4a882]/50 mb-6"></div>
+          <h3 class="font-serif text-xl text-[#f0ede8] mb-3">Free online presence audit</h3>
+          <p class="text-[#7a7770] font-light leading-relaxed max-w-xl">We review your Google listing, website, reviews, and competitors, then show you what is working and what is costing you leads.</p>
+        </div>
+        <div class="py-12 border-b border-[#1c1c1c] reveal">
+          <div class="w-6 h-px bg-[#c4a882]/50 mb-6"></div>
+          <h3 class="font-serif text-xl text-[#f0ede8] mb-3">Custom website mockup</h3>
+          <p class="text-[#7a7770] font-light leading-relaxed max-w-xl">We design a homepage for your business, free and with no commitment. You see exactly what your new site looks like before you spend a dollar.</p>
+        </div>
+        <div class="py-12 border-b border-[#1c1c1c] reveal">
+          <div class="w-6 h-px bg-[#c4a882]/50 mb-6"></div>
+          <h3 class="font-serif text-xl text-[#f0ede8] mb-3">Build and launch in 7 days</h3>
+          <p class="text-[#7a7770] font-light leading-relaxed max-w-xl">Once approved, we build fast. You review, we revise, and you are live within a week with a site that performs from day one.</p>
+        </div>
+        <div class="py-12 reveal">
+          <div class="w-6 h-px bg-[#c4a882] mb-6"></div>
+          <h3 class="font-serif text-xl text-[#c4a882] mb-3">Your phone starts ringing</h3>
+          <p class="text-[#7a7770] font-light leading-relaxed max-w-xl">Your new website works around the clock, turning search traffic into phone calls and estimate requests while you focus on the work you do best.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 md:py-32 border-t border-[#1c1c1c] relative">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,_rgba(196,168,130,0.03),_transparent_60%)]"></div>
+    <div class="relative max-w-5xl mx-auto px-6 lg:px-12">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-24">
+        <div class="reveal">
+          <div class="gold-line mb-6"></div>
+          <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-6">Start a project.</h2>
+          <p class="text-[#7a7770] text-lg font-light leading-relaxed">
+            Tell us about your business and we will send a free audit and custom mockup within 48 hours. You decide from there.
+          </p>
+        </div>
+        <form class="space-y-1 reveal" onsubmit="event.preventDefault();this.innerHTML='<div class=\'py-12\'><div class=\'gold-line mb-6\'></div><h3 class=\'font-serif text-2xl text-[#f0ede8] mb-3\'>Thank you.</h3><p class=\'text-[#7a7770] font-light\'>We will review your business and get back to you within 48 hours.</p></div>'">
+          <input name="name" placeholder="Name" required class="input-line">
+          <input name="business" placeholder="Business name" required class="input-line">
+          <input name="phone" type="tel" placeholder="Phone" required class="input-line">
+          <input name="email" type="email" placeholder="Email" class="input-line">
+          <input name="website" placeholder="Current website (if any)" class="input-line">
+          <select name="industry" class="input-line" style="color:#4a4a45">
+            <option value="">Industry</option>
+            <option value="roofing">Roofing</option>
+            <option value="hvac">HVAC</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="electrical">Electrical</option>
+            <option value="landscaping">Landscaping</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="pt-6">
+            <button type="submit" class="w-full border border-[#c4a882] text-[#c4a882] py-4 text-xs tracking-[0.2em] uppercase hover:bg-[#c4a882] hover:text-black transition-all cursor-pointer">Get Your Free Mockup</button>
+          </div>
+          <p class="text-center text-[#4a4a45] text-xs pt-4">No spam. You will receive a mockup and our honest assessment of your online presence.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#1c1c1c] py-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <a href="#"><img src="logo.svg" alt="Agentix" class="h-7 invert opacity-60"></a>
+      <div class="flex gap-8 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
+        <a href="#work" class="hover:text-[#f0ede8] transition-colors">Work</a>
+        <a href="#pricing" class="hover:text-[#f0ede8] transition-colors">Pricing</a>
+        <a href="#process" class="hover:text-[#f0ede8] transition-colors">Process</a>
+        <a href="#contact" class="hover:text-[#f0ede8] transition-colors">Contact</a>
+      </div>
+      <p class="text-xs text-[#4a4a45]">&copy; 2026 Agentix Web Solutions</p>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal, .clip-reveal').forEach(el => obs.observe(el));
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+    });
+
+    const toggle = document.getElementById('menu-toggle');
+    const closeBtn = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>
