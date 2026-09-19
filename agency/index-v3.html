@@ -84,7 +84,7 @@
   <nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-500">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex justify-between items-center">
       <a href="#" class="flex items-center gap-3">
-        <img src="logo.svg" alt="Agentix" class="h-8 invert opacity-90">
+        <img src="logo.svg" alt="Agentix" class="h-8" style="filter: brightness(0) invert(1) sepia(1) saturate(0.6) hue-rotate(340deg) brightness(0.82)">
       </a>
       <div class="hidden md:flex items-center gap-10">
         <a href="#work" class="text-xs tracking-[0.2em] uppercase text-[#7a7770] hover:text-[#f0ede8] transition-colors">Work</a>
@@ -438,7 +438,7 @@
   <!-- Footer -->
   <footer class="border-t border-[#1c1c1c] py-10">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-      <a href="#"><img src="logo.svg" alt="Agentix" class="h-7 invert opacity-60"></a>
+      <a href="#"><img src="logo.svg" alt="Agentix" class="h-7" style="filter: brightness(0) invert(1) sepia(1) saturate(0.6) hue-rotate(340deg) brightness(0.65)"></a>
       <div class="flex gap-8 text-xs tracking-[0.15em] uppercase text-[#7a7770]">
         <a href="#work" class="hover:text-[#f0ede8] transition-colors">Work</a>
         <a href="#pricing" class="hover:text-[#f0ede8] transition-colors">Pricing</a>
@@ -450,10 +450,16 @@
   </footer>
 
   <script>
+    const heroSection = document.querySelector('section.min-h-screen');
+    const heroEls = heroSection ? heroSection.querySelectorAll('.reveal, .clip-reveal') : [];
+    heroEls.forEach(el => el.classList.add('visible'));
+
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal, .clip-reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.reveal, .clip-reveal').forEach(el => {
+      if (!el.classList.contains('visible')) obs.observe(el);
+    });
 
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
